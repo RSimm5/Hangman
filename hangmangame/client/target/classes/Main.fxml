@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.StackPane?>
+
+<!-- multiScene fxml -->
+<StackPane xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Controller"
+      stylesheets="@style.css">
+
+    <!-- enter port -->
+    <VBox fx:id="portPage">
+        <Text text="Port" style="-fx-font-size: 24;"/>
+        <HBox>
+            <TextField fx:id="portField" promptText="Enter port number here"/>
+            <Button text="Enter" onAction="#handlePort"/>
+        </HBox>
+    </VBox>
+
+    <!-- Start Page -->
+    <VBox fx:id="startPage" visible="false">
+        <Text text="Hangman" style="-fx-font-size: 24;"/>
+        <HBox>
+            <Button text="Rules" onAction="#handleRules"/>
+            <Button text="Play" onAction="#handlePlay"/>
+        </HBox>
+    </VBox>
+
+    <!-- Select Category Page -->
+    <VBox fx:id="selectCategoryPage" visible="false">
+        <Label text="Select Category" style="-fx-font-size: 24;"/>
+        <HBox>
+            <Button fx:id="cat1" text="Category 1" onAction="#handleCat1"/>
+            <Label fx:id="att1" text="Attempts Left: 3"/>
+        </HBox>
+        <HBox>
+            <Button fx:id="cat2" text="Category 2" onAction="#handleCat2"/>
+            <Label fx:id="att2" text="Attempts Left: 3"/>
+        </HBox>
+        <HBox>
+            <Button fx:id="cat3" text="Category 3" onAction="#handleCat3"/>
+            <Label fx:id="att3" text="Attempts Left: 3"/>
+        </HBox>
+        
+    </VBox>
+
+    <!-- Gameplay Page -->
+    <VBox fx:id="roundPage" visible="false">
+        <Text fx:id="hiddenWord" text="Word" style="-fx-font-size: 24;"/>
+        <HBox>
+            <TextField fx:id="guessInput"/>
+            <Button text="Guess" onAction="#handleGuess"/>
+            <Label fx:id="attRound" text="Attempts Left: 6" />
+        </HBox>
+        <Text text="Previous Guesses:"/>
+        <TextField fx:id="prevGuesses" editable="false" promptText="previous guesses show up here"/>
+    </VBox>
+
+    <!-- Scene Rules -->
+    <VBox fx:id="rulesPage" visible="false">
+        <Text text="Rules" style="-fx-font-size: 24px;"/>
+        <Text text="• The player must guess 3 words from 3 different categories to win"/>
+        <Text text="• The player has up to 6 letter guesses on a given word."/>
+        <Text text="• correct guesses and repeat guesses don't count towards guesses left."/>
+        <Text text="• If the player guesses a word correctly, they must choose from the remaining categories."/>
+        <Text text="• If the player runs out of attempts in any one category, they lose."/>
+        <Button text="back" onAction="#handleBack"/>
+    </VBox>
+
+    <!-- Scene WinPage -->
+    <VBox fx:id="winPage" visible="false">
+        <Text text="You Won!" style="-fx-font-size: 24px;"/>
+        <Button text="play again" onAction="#handlePlayAgain"/>
+    </VBox>
+
+    <VBox fx:id="losePage" visible="false">
+        <Text text="Game Over" style="-fx-font-size: 24px;"/>
+        <Button text="play again" onAction="#handlePlayAgain"/>
+    </VBox>
+    
+
+</StackPane>
